@@ -1,34 +1,18 @@
-version: '3.9'
+version: "3.8"
+
 services:
-  db:
-    container_name: db
+  my_db:
+    container_name: ssps-db
+    hostname: ssps-db
     image: postgres
     ports:
       - "5432:5432"
-    env_file:
-        - ./apps/backend/.env #shared env file with strapi application 
-    volumes:
-      - ./db-data/:/var/lib/postgresql/data
     restart: unless-stopped
-    
-
-  #turborepo
-  turbo:
-    container_name: strapi_nextjs_turbo
-    build:
-      context: .
-      dockerfile: dev.Dockerfile
-    ports:
-      - "3000:3000"
-      - "1337:1337"
     environment:
-      - STRAPI_VERSION=4.0.2 #specify your strapi version here (need to be same as package.json)
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_DB=${POSTGRES_DB}
     volumes:
-      - ./:/app/
-       # Just specify a path and let the Engine create a volume
-      - /app/node_modules/
-    restart: on-failure
-
-networks:
-  turbo-network:
-    driver: bridge
+      - ./db_data:/var/lib/postgresql/data/
+    expose:
+      - "5432"

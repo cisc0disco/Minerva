@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "prezentaces",
+  "info": {
+    "singularName": "prezentace",
+    "pluralName": "prezentaces",
+    "displayName": "Prezentace",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nazev": {
+      "type": "string"
+    },
+    "Popisek": {
+      "type": "text"
+    },
+    "Soubor": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Preview": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Datum": {
+      "type": "date"
+    },
+    "Trida": {
+      "type": "customField",
+      "options": [
+        "2.A",
+        "2.B",
+        "2.C",
+        "2.K",
+        "3.K"
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    }
+  }
+}

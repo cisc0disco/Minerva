@@ -1,0 +1,23 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "build/**"]
+    },
+    "web#build": {
+      "dependsOn": ["^build"],
+      "env": ["GITHUB_ID", "GITHUB_SECRET"],
+      "outputs": [".next/**"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "cache": false
+    },
+    "develop": {
+      "cache": false
+    }
+  }
+}
