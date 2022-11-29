@@ -7,56 +7,72 @@ export const MainStyled = styled.div`
   background-color: white;
 `;
 
-export const SideBar = styled.div`
-  display: flex;
-  position: fixed;
-  width: 12.5vw;
+export const StyledSideBar = styled.div`
+  width: 8em;
   height: 100vh;
-  background-color: black;
-  flex-direction: column-reverse;
-  margin-top: auto;
-  align-items: center;
-  justify-content: top;
+  border-right: 1px solid #b7b7b7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-  #buttons {
+  --main-color: #b1b1b3;
+
+  #centerIcons {
     display: flex;
     flex-direction: column;
-    margin-top: 3em;
-    width: 100%;
     align-items: center;
+    height: auto;
+    gap: 1.5em;
+    margin-bottom: 3em;
   }
 
-  #button {
-    margin-top: 2em;
+  .icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 6em;
     cursor: pointer;
+  }
+
+  .icon > p {
+    margin-top: 0.5em;
+    font-family: "Inter", sans-serif;
+  }
+
+  .icon > * {
+    color: var(--main-color);
+  }
+
+  #bottomIcons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3em;
+    height: auto;
+  }
+
+  .iconImage {
     display: flex;
     align-items: center;
-    margin-right: auto;
+    justify-content: center;
+    background-color: #fff;
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+  }
+  .active > .iconImage {
+    background-color: #4c96f6;
+  }
+
+  .active > .iconImage > svg {
     color: white;
   }
 
-  #buttonIcon {
-    margin-left: 1em;
-    margin-right: 1em;
-  }
-
-  #caret {
-    position: absolute;
-    right: 0;
-    margin-right: 1.5em;
-  }
-
-  #imageContainer {
-    position: relative;
-    height: 4.5vw;
-    width: 4.5vw;
-    margin-top: auto;
-    margin-bottom: 1em;
-  }
-
-  #avatar {
-    border-radius: 25%;
-    cursor: pointer;
+  .border {
+    background-color: #b7b7b7;
+    height: 1px;
+    width: 85%;
+    align-self: center;
   }
 `;
 

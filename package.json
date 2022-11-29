@@ -9,7 +9,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel & turbo run develop",
-    "dev:docker": "docker-compose up -d",
+    "dev:docker": "docker-compose --env-file db.env up -d",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
