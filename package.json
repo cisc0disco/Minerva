@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "build": "turbo run build",
+    "test": "turbo run test",
     "dev": "turbo run dev --parallel & turbo run develop",
     "dev:docker": "docker-compose --env-file db.env up -d",
     "lint": "turbo run lint",
