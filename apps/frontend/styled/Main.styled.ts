@@ -5,6 +5,7 @@ export const MainStyled = styled.div`
   height: 100vh;
   width: 100vw;
   background-color: white;
+  display: flex;
 `;
 
 export const StyledSideBar = styled.div`
@@ -14,7 +15,7 @@ export const StyledSideBar = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  position: absolute;
   --main-color: #b1b1b3;
 
   #centerIcons {

@@ -1,7 +1,6 @@
-import { SessionProvider } from "next-auth/react";
 import GlobalStyle from "../styled/globalStyles";
 import { ModalProvider } from "styled-react-modal";
-import styled from "styled-components";
+import { SessionProvider } from "next-auth/react";
 
 export default function App({
   Component,

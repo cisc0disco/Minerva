@@ -3,11 +3,14 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { authOptions } from "./api/auth/[...nextauth]";
 import { unstable_getServerSession } from "next-auth";
-import Main from "./main";
+import { MainStyled } from "../styled/Main.styled";
+import SideBar from "../components/SideBar";
+import Presentations from "../components/Presentations";
 
-const Component = () => {
+const Component = ({ data }) => {
   const { data: session } = useSession();
   const [newUserStatus, setNewUserStatus] = useState(null);
+  const [activeCategory, setActiveCategory] = useState("home");
   const router = useRouter();
 
   useEffect(() => {
@@ -23,26 +26,37 @@ const Component = () => {
   if (session && newUserStatus) {
     router.push("/register");
   } else if (session && !newUserStatus) {
-    console.log(session);
-    return <Main />;
+    return (
+      <MainStyled>
+        <SideBar
+          activeCategory={activeCategory}
+          setActiveCategory={setActiveCategory}
+        />
+        {activeCategory == "presentation" && <Presentations props={data} />}
+      </MainStyled>
+    );
   }
+
   if (!session) {
     signIn();
-
-    /*
-    return (
-      <>
-        Not signed in <br />
-        <button onClick={() => signIn()}>Sign in</button>
-      </>
-    );
-    */
   }
 };
 
 export async function getServerSideProps({ req, res }) {
+  const response = await fetch(
+    process.env.STRAPI_URL + `/api/prezentaces?populate=*`,
+    {
+      headers: {
+        Authorization: "Bearer " + process.env.STRAPI_API_SECRET,
+      },
+    }
+  );
+
+  const { data } = await response.json();
+
   return {
     props: {
+      data: data,
       session: await unstable_getServerSession(req, res, authOptions),
     },
   };

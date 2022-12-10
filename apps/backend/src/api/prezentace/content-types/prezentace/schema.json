@@ -4,7 +4,7 @@
   "info": {
     "singularName": "prezentace",
     "pluralName": "prezentaces",
-    "displayName": "Prezentace",
+    "displayName": "presentation",
     "description": ""
   },
   "options": {
@@ -12,13 +12,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Nazev": {
+    "nazev": {
       "type": "string"
     },
-    "Popisek": {
+    "popisek": {
       "type": "text"
     },
-    "Soubor": {
+    "soubor": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -29,21 +29,18 @@
         "audios"
       ]
     },
-    "Preview": {
+    "preview": {
       "type": "media",
       "multiple": false,
-      "required": false,
+      "required": true,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ]
     },
-    "Datum": {
+    "datum": {
       "type": "date"
     },
-    "Trida": {
+    "trida": {
       "type": "customField",
       "options": [
         "2.A",
@@ -52,7 +49,8 @@
         "2.K",
         "3.K"
       ],
-      "customField": "plugin::multi-select.multi-select"
+      "customField": "plugin::multi-select.multi-select",
+      "required": true
     }
   }
 }

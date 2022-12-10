@@ -23,7 +23,7 @@ const RegisterForm = ({ activeCategory, setActiveCategory }) => {
           <div className="iconImage">
             <ListDashes size={iconSize} />
           </div>
-          <p>Menu</p>
+          <p>Home</p>
         </div>
         <div
           className={`icon ${activeCategory == "presentation" ? "active" : ""}`}
