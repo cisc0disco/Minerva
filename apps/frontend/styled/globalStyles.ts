@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
         max-width: 100vw;
     }
     body {
-        background-color: black;
+        /* background-color: black; */
     }
 
     #root{
