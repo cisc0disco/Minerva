@@ -19,6 +19,7 @@
     "@strapi/strapi": "4.5.3",
     "axios": "^0.21.4",
     "pg": "8.6.0",
+    "react-select": "^5.7.0",
     "strapi-plugin-multi-select": "1.1.0"
   },
   "author": {
