@@ -7,8 +7,7 @@ type BlockPropsTypes = {
   file: string;
 };
 
-const Block = (props) => {
-  console.log(props);
+const Block = (props: BlockPropsTypes) => {
   return (
     <BlockStyled>
       <div className="imageContainer">

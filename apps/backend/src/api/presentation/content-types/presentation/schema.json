@@ -1,9 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "prezentaces",
+  "collectionName": "presentation",
   "info": {
-    "singularName": "prezentace",
-    "pluralName": "prezentaces",
+    "singularName": "presentation",
+    "pluralName": "presentations",
     "displayName": "presentation",
     "description": ""
   },
@@ -22,33 +22,20 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "allowedTypes": ["images", "files", "videos", "audios"]
     },
     "preview": {
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "datum": {
       "type": "date"
     },
     "trida": {
       "type": "customField",
-      "options": [
-        "2.A",
-        "2.B",
-        "2.C",
-        "2.K",
-        "3.K"
-      ],
+      "options": ["2.A", "2.B", "2.C", "2.K", "3.K"],
       "customField": "plugin::multi-select.multi-select",
       "required": true
     }
