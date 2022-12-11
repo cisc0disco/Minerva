@@ -58,7 +58,7 @@ export const getServerSideProps = async (context) => {
   const { data } = await client.query({
     query: gql`
       query getPresentations {
-        presentations(filters: { trida: { containsi: "2.K" } }) {
+        presentations(filters: { trida: { containsi: "${session.user.class}" } }) {
           data {
             attributes {
               nazev
