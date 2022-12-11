@@ -5,16 +5,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const Component = ({ data }) => {
-  const [newUserStatus, setNewUserStatus] = useState(null);
-  const router = useRouter();
-
   const { data: session } = useSession();
-
-  useEffect(() => {
-    if (session == null) return;
-    console.log("session.jwt", session.jwt);
-    console.log(session);
-  }, [session]);
 
   // useEffect(() => {
   //   const fetchStatus = async () => {
