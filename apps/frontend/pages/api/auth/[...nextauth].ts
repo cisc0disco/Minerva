@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import axios from "axios";
 
-export async function signIn({ email, password }) {
+async function signIn({ email, password }) {
   const res = await axios.post(`http://0.0.0.0:1337/api/auth/local`, {
     identifier: email,
     password,
@@ -55,8 +55,8 @@ export const authOptions = {
       let newSession = {
         ...token,
       };
-      const isSignIn = user ? true : false;
-      if (isSignIn) {
+
+      if (user) {
         token.id = user.id;
         token.jwt = user.jwt;
 

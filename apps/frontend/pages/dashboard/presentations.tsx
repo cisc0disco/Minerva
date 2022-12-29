@@ -1,13 +1,11 @@
 import { getSession } from "next-auth/react";
 import { StyledPresentations } from "styled/Presentations.styled";
 import Block from "components/Block";
-import { useState } from "react";
 import SideBar from "components/SideBar";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import { Box, Flex, Input, useColorModeValue } from "@chakra-ui/react";
 
 const Presentations = ({ presentations }) => {
-  const [activeCategory, setActiveCategory] = useState("home");
-
   const blocks = presentations.map((block) => {
     return (
       <Block
@@ -25,16 +23,27 @@ const Presentations = ({ presentations }) => {
     );
   });
 
+  const bg = useColorModeValue("white", "#131224");
+
   return (
-    <>
-      <SideBar
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
-      />
-      <StyledPresentations>
-        <div className="view">{blocks}</div>
-      </StyledPresentations>
-    </>
+    <Flex>
+      <SideBar currentPage={"presentations"} />
+      <Box bg={bg} w="100vw" h="100vh">
+        <Input
+          placeholder="Hledat"
+          type="search"
+          size="lg"
+          maxW={300}
+          w={"80%"}
+          h={12}
+          mt="5"
+          ml="5"
+        />
+        <Box w={"100%"} h={"calc(100% - 12)"} pt="10" pl="10">
+          {blocks}
+        </Box>
+      </Box>
+    </Flex>
   );
 };
 
