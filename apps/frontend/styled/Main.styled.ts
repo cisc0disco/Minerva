@@ -4,77 +4,8 @@ import Modal from "styled-react-modal";
 export const MainStyled = styled.div`
   height: 100vh;
   width: 100vw;
-  background-color: white;
+  background-color: ${(props) => props.theme.background_color};
   display: flex;
-`;
-
-export const StyledSideBar = styled.div`
-  width: 8em;
-  height: 100vh;
-  border-right: 1px solid #b7b7b7;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: absolute;
-  --main-color: #b1b1b3;
-
-  #centerIcons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: auto;
-    gap: 1.5em;
-    margin-bottom: 3em;
-  }
-
-  .icon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 6em;
-    cursor: pointer;
-  }
-
-  .icon > p {
-    margin-top: 0.5em;
-    font-family: "Inter", sans-serif;
-  }
-
-  .icon > * {
-    color: var(--main-color);
-  }
-
-  #bottomIcons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 3em;
-    height: auto;
-  }
-
-  .iconImage {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    width: 4em;
-    height: 4em;
-    border-radius: 50%;
-  }
-  .active > .iconImage {
-    background-color: #4c96f6;
-  }
-
-  .active > .iconImage > svg {
-    color: white;
-  }
-
-  .border {
-    background-color: #b7b7b7;
-    height: 1px;
-    width: 85%;
-    align-self: center;
-  }
 `;
 
 export const ModalStyled = Modal.styled`
