@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
-import { SignInStyled } from "styled/Sign-In.styled";
 import {
   Alert,
   AlertDescription,

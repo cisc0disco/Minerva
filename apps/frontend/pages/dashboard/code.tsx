@@ -1,18 +1,24 @@
-import { Box, Center, Heading, useColorModeValue } from "@chakra-ui/react";
+import {
+  Box,
+  useColorModeValue,
+  Heading,
+  Center,
+  Flex,
+} from "@chakra-ui/react";
 import SideBar from "components/SideBar";
 
 const Code = () => {
   const bg = useColorModeValue("white", "#131224");
 
   return (
-    <>
+    <Flex>
       <SideBar currentPage={"code"} />
-      <Box bg={bg} w="calc(100% - 8em)" ml="8em" h="100vh">
+      <Box bg={bg} w="100vw" h="100vh">
         <Center pt={"50vh"}>
-          <Heading> Zde zatím nic není &nbsp; 🚧</Heading>
+          <Heading textAlign={"center"}> Zde zatím nic není &nbsp; 🚧</Heading>
         </Center>
       </Box>
-    </>
+    </Flex>
   );
 };
 
