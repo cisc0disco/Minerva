@@ -6,13 +6,13 @@ services:
     container_name: strapi_postgres
     environment:
       DATABASE_CLIENT: postgres
-      DATABASE_HOST: postgres
-      DATABASE_NAME: ${DATABASE_NAME:-strapidb}
-      DATABASE_PORT: ${DATABASE_PORT:-5432}
-      DATABASE_USERNAME: ${DATABASE_USERNAME:-strapidb_user}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-P@ssw0rd}
+      DATABASE_HOST: ssps-db
+      DATABASE_NAME: ${POSTGRES_DB:-strapidb}
+      DATABASE_PORT: 5432
+      DATABASE_USERNAME: ${POSTGRES_USER:-strapidb_user}
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD:-P@ssw0rd}
     volumes:
-      - ./app:/srv/app
+      - ./:/srv/app
     ports:
       - "1337:1337"
     depends_on:
