@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_plan_plans",
+  "info": {
+    "displayName": "Plans",
+    "icon": "align-justify",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Hours": {
+      "type": "component",
+      "repeatable": true,
+      "component": "plan.education-plan"
+    },
+    "Class": {
+      "type": "string"
+    }
+  }
+}

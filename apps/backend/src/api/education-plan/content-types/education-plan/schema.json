@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "education_plans",
+  "info": {
+    "singularName": "education-plan",
+    "pluralName": "education-plans",
+    "displayName": "Education-Plan",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Plans": {
+      "type": "component",
+      "repeatable": true,
+      "component": "plan.plans"
+    }
+  }
+}

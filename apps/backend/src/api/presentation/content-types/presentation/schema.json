@@ -12,32 +12,37 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "nazev": {
+    "Title": {
       "type": "string"
     },
-    "popisek": {
-      "type": "text"
-    },
-    "soubor": {
+    "File": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
-    "preview": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": ["images"]
-    },
-    "datum": {
+    "Date": {
       "type": "date"
     },
-    "trida": {
+    "Class": {
       "type": "customField",
-      "options": ["2.A", "2.B", "2.C", "2.K", "3.K"],
+      "options": [
+        "2.A",
+        "2.B",
+        "2.C",
+        "2.K",
+        "3.K"
+      ],
       "customField": "plugin::multi-select.multi-select",
       "required": true
+    },
+    "Hour": {
+      "type": "integer"
     }
   }
 }

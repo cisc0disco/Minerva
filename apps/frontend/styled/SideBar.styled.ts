@@ -11,7 +11,7 @@ export const StyledSideBar = styled.div<SideBar>`
   border-right: 1px solid ${(props) => props.borderColor};
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: top;
   --main-color: #b1b1b3;
   background-color: ${(props) => props.background};
   #centerIcons {
@@ -66,6 +66,7 @@ export const StyledSideBar = styled.div<SideBar>`
   }
 
   .border {
+    margin-top: 5em;
     background-color: ${(props) => props.borderColor};
     height: 1px;
     width: 85%;
