@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  strapi:
+    image: strapi/strapi
+    container_name: strapi_postgres
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: postgres
+      DATABASE_NAME: ${DATABASE_NAME:-strapidb}
+      DATABASE_PORT: ${DATABASE_PORT:-5432}
+      DATABASE_USERNAME: ${DATABASE_USERNAME:-strapidb_user}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-P@ssw0rd}
+    volumes:
+      - ./app:/srv/app
+    ports:
+      - "1337:1337"
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: ssps-db
+    hostname: ssps-db
+    image: postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - ./db_data:/var/lib/postgresql/data/
+    expose:
+      - "5432"
