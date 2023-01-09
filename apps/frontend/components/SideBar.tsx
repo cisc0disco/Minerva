@@ -31,21 +31,16 @@ const SideBar = ({ currentPage }) => {
   return (
     <Flex direction={"column"} bg={bg} h="100vh">
       {isMobile ? (
-        <Box p={3} zIndex="100">
+        <Box zIndex="100">
           {sidebarOpen ? (
-            <Box pl={"2em"}>
-              <ArrowLeft
-                size={iconSize + 10}
-                onClick={() => setSidebarOpen(false)}
-              />
-            </Box>
+            ""
           ) : (
-            <nav style={{ width: "100vw" }}>
+            <Flex justifyContent={"center"} w="8em" mt={"1em"} pos="absolute">
               <ListDashes
                 size={iconSize + 10}
                 onClick={() => setSidebarOpen(true)}
               />
-            </nav>
+            </Flex>
           )}
         </Box>
       ) : (
@@ -54,6 +49,14 @@ const SideBar = ({ currentPage }) => {
 
       {sidebarOpen && (
         <StyledSideBar background={bg} borderColor={borderColor}>
+          <Flex justifyContent={"center"} w="100%" mb={"4em"} mt={"1em"}>
+            {isMobile && (
+              <ArrowLeft
+                size={iconSize + 10}
+                onClick={() => setSidebarOpen(false)}
+              />
+            )}
+          </Flex>
           <div id="centerIcons">
             <div
               className={`icon ${activeCategory == "home" ? "active" : ""}`}
@@ -66,23 +69,14 @@ const SideBar = ({ currentPage }) => {
             </div>
             <div
               className={`icon ${
-                activeCategory == "presentations" ? "active" : ""
+                activeCategory == "materials" ? "active" : ""
               }`}
-              onClick={() => setPage("presentations")}
+              onClick={() => setPage("materials")}
             >
               <div className="iconImage">
                 <PresentationChart size={iconSize} />
               </div>
-              <p>Prezentace</p>
-            </div>
-            <div
-              className={`icon ${activeCategory == "code" ? "active" : ""}`}
-              onClick={() => setPage("code")}
-            >
-              <div className="iconImage">
-                <FileCode size={iconSize} />
-              </div>
-              <p>Code</p>
+              <p>Materiály</p>
             </div>
             <div
               className={`icon ${activeCategory == "homework" ? "active" : ""}`}

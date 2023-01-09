@@ -4,6 +4,7 @@ import { SessionProvider, getSession } from "next-auth/react";
 import Head from "next/head";
 import { ChakraProvider, ThemeConfig, extendTheme } from "@chakra-ui/react";
 import Snowfall from "react-snowfall";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
 const config: ThemeConfig = {
   initialColorMode: "dark",
@@ -15,6 +16,10 @@ export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }) {
+  const client = new ApolloClient({
+    uri: "http://localhost:1337/graphql",
+    cache: new InMemoryCache(),
+  });
   return (
     <>
       <Head>
@@ -24,8 +29,9 @@ export default function App({
         <ModalProvider>
           <GlobalStyle />
           <ChakraProvider theme={theme}>
-            <Snowfall />
-            <Component {...pageProps} />
+            <ApolloProvider client={client}>
+              <Component {...pageProps} />
+            </ApolloProvider>
           </ChakraProvider>
         </ModalProvider>
       </SessionProvider>
