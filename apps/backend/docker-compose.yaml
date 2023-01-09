@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.3"
 
 services:
   strapi:
@@ -7,10 +7,10 @@ services:
     environment:
       DATABASE_CLIENT: postgres
       DATABASE_HOST: ssps-db
-      DATABASE_NAME: ${POSTGRES_DB:-strapidb}
+      DATABASE_NAME: ${POSTGRES_DB}
       DATABASE_PORT: 5432
-      DATABASE_USERNAME: ${POSTGRES_USER:-strapidb_user}
-      DATABASE_PASSWORD: ${POSTGRES_PASSWORD:-P@ssw0rd}
+      DATABASE_USERNAME: ${POSTGRES_USER}
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - ./:/srv/app
     ports:
