@@ -3,10 +3,13 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import axios from "axios";
 
 async function signIn({ email, password }) {
-  const res = await axios.post(`http://127.0.0.0:1337/api/auth/local`, {
-    identifier: email,
-    password,
-  });
+  const res = await axios.post(
+    `http://${process.env.STRAPI_URL}:1337/api/auth/local`,
+    {
+      identifier: email,
+      password,
+    }
+  );
   return res.data;
 }
 

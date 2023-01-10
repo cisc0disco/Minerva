@@ -5,10 +5,13 @@ export default async (req, res) => {
   const { password, identifier } = req.body;
 
   try {
-    const postRes = await axios.post("http://localhost:1337/api/auth/local", {
-      identifier,
-      password,
-    });
+    const postRes = await axios.post(
+      `http://${process.env.STRAPI_URL}:1337/api/auth/local`,
+      {
+        identifier,
+        password,
+      }
+    );
 
     setCookie({ res }, "jwt", postRes.data.jwt, {
       httpOnly: true,

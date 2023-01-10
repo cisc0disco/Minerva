@@ -17,7 +17,7 @@ export default function App({
   pageProps: { session, ...pageProps },
 }) {
   const client = new ApolloClient({
-    uri: "http://localhost:1337/graphql",
+    uri: `http://${process.env.STRAPI_URL}:1337/graphql`,
     cache: new InMemoryCache(),
   });
   return (
