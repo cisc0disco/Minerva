@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import axios from "axios";
 
 async function signIn({ email, password }) {
-  const res = await axios.post(`http://0.0.0.0:1337/api/auth/local`, {
+  const res = await axios.post(`http://127.0.0.0:1337/api/auth/local`, {
     identifier: email,
     password,
   });
@@ -20,16 +20,8 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        /**
-         * This function is used to define if the user is authenticated or not.
-         * If authenticated, the function should return an object contains the user data.
-         * If not, the function should return `null`.
-         */
         if (credentials == null) return null;
-        /**
-         * credentials is defined in the config above.
-         * We can expect it contains two properties: `email` and `password`
-         */
+
         try {
           const { user, jwt } = await signIn({
             email: credentials.email,
