@@ -67,7 +67,7 @@ const MaterialContent = ({ range, trida }) => {
           {presentations.map((presentation) => {
             const presentationData: PresentationData = presentation.attributes;
             const presentationUrl =
-              "http://127.0.0.1:1337" +
+              `http://${process.env.STRAPI_URL}` +
               presentationData.File.data.attributes.url;
             return (
               <Card>

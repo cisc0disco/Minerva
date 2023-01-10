@@ -6,7 +6,7 @@ export default async (req, res) => {
 
   try {
     const postRes = await axios.post(
-      `http://${process.env.STRAPI_URL}:1337/api/auth/local`,
+      `http://${process.env.STRAPI_URL}/api/auth/local`,
       {
         identifier,
         password,

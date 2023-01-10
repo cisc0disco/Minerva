@@ -4,7 +4,7 @@ import axios from "axios";
 
 async function signIn({ email, password }) {
   const res = await axios.post(
-    `http://${process.env.STRAPI_URL}:1337/api/auth/local`,
+    `http://${process.env.STRAPI_URL}/api/auth/local`,
     {
       identifier: email,
       password,
