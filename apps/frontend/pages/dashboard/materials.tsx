@@ -1,5 +1,4 @@
 import { getSession, useSession } from "next-auth/react";
-import { StyledPresentations } from "styled/Presentations.styled";
 import MaterialContent from "components/MaterialContent";
 import SideBar from "components/SideBar";
 import SidePanel from "components/SidePanel";
@@ -38,25 +37,30 @@ const Materials = ({ hours, trida }) => {
   );
 };
 
-export const getServerSideProps = async (context) => {
-  const session = await getSession(context);
+export const getServerSideProps = async (ctx) => {
+  const session = await getSession(ctx);
   let hours = {};
-  if (session == null) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: true,
-      },
-    };
+
+  try {
+    if (session == null) {
+      return {
+        redirect: {
+          destination: "/",
+          permanent: true,
+        },
+      };
+    }
+  } catch (err) {
+    console.log(`Session error: ${err}`);
   }
 
-  const client = new ApolloClient({
-    uri: `http://${process.env.STRAPI_URL}/graphql`,
-    cache: new InMemoryCache(),
-  });
-
-  const { data } = await client.query({
-    query: gql`
+  try {
+    const client = new ApolloClient({
+      uri: `http://${process.env.STRAPI_URL}/graphql`,
+      cache: new InMemoryCache(),
+    });
+    const { data } = await client.query({
+      query: gql`
       query getPlan {
         educationPlans {
           data {
@@ -74,11 +78,19 @@ export const getServerSideProps = async (context) => {
         }
       }
     `,
-  });
+    });
 
-  hours = data.educationPlans.data[0].attributes.Plans[0].Hours;
+    hours = data.educationPlans.data[0].attributes.Plans[0].Hours;
+  } catch (err) {
+    console.log(`GQL Error: ${err}`);
+  }
 
-  const trida = session.user.class;
+  let trida = null;
+  try {
+    trida = session.user.class;
+  } catch (error) {
+    console.log("Cannot get class from the user's session");
+  }
 
   return {
     props: { hours, trida },
