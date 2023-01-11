@@ -3,12 +3,7 @@ import { StyledPresentations } from "styled/Presentations.styled";
 import MaterialContent from "components/MaterialContent";
 import SideBar from "components/SideBar";
 import SidePanel from "components/SidePanel";
-import {
-  ApolloClient,
-  ApolloProvider,
-  InMemoryCache,
-  gql,
-} from "@apollo/client";
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { Box, Flex, useColorModeValue, Button } from "@chakra-ui/react";
 import { useState } from "react";
 
@@ -18,7 +13,7 @@ const Materials = ({ hours, trida }) => {
 
   return (
     <Flex>
-      <SideBar currentPage={"presentations"} />
+      <SideBar currentPage={"materials"} />
       <Flex bg={bg} w="100vw" h="100vh">
         <Flex w={"100%"}>
           <Box w={"100%"}>
