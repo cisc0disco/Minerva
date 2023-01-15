@@ -7,36 +7,7 @@ import { IndexStyled } from "styled/Index.styled";
 import { Button } from "@chakra-ui/react";
 
 const Component = ({ data }) => {
-  const { data: session } = useSession();
   const router = useRouter();
-
-  // useEffect(() => {
-  //   const fetchStatus = async () => {
-  //     const res = await fetch("http://localhost:3000/api/userExists");
-  //     const json = await res.json();
-  //     setNewUserStatus(json["newUser"]);
-  //   };
-
-  //   fetchStatus().catch(console.error);
-  // }, []);
-
-  // if (session && newUserStatus) {
-  //   router.push("/register");
-  // } else if (session && !newUserStatus) {
-  //   return (
-  //     <MainStyled>
-  //       <SideBar
-  //         activeCategory={activeCategory}
-  //         setActiveCategory={setActiveCategory}
-  //       />
-  //       {activeCategory == "presentation" && <Presentations props={data} />}
-  //     </MainStyled>
-  //   );
-  // }
-
-  // if (!session) {
-  //   signIn();
-  // }
 
   return (
     <IndexStyled>

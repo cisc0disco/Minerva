@@ -20,6 +20,7 @@ export default function SignIn() {
     });
     if (result.ok) {
       router.replace("/dashboard/home");
+      return;
     }
     setError("Špatné údaje");
   };

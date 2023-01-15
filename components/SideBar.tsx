@@ -95,8 +95,7 @@ const SideBar = ({ currentPage }) => {
             <div
               className="icon"
               onClick={() => {
-                router.push("/");
-                signOut();
+                signOut({ callbackUrl: "/" });
               }}
             >
               <div className="iconImage">
