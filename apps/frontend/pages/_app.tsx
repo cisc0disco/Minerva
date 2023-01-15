@@ -3,7 +3,6 @@ import { ModalProvider } from "styled-react-modal";
 import { SessionProvider, getSession } from "next-auth/react";
 import Head from "next/head";
 import { ChakraProvider, ThemeConfig, extendTheme } from "@chakra-ui/react";
-import Snowfall from "react-snowfall";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
 const config: ThemeConfig = {

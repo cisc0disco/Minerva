@@ -1,11 +1,3 @@
-import {
-  Collapse,
-  Heading,
-  ListItem,
-  UnorderedList,
-  Text,
-  Button,
-} from "@chakra-ui/react";
 import { useState } from "react";
 import { BlockStyled } from "styled/Block.styled";
 
@@ -55,11 +47,6 @@ const Blocks = ({ hours }) => {
           <div className="button" onClick={handleToggle}>
             <button>Zobrazit {show ? "Méně" : "Více"}</button>
           </div>
-          {/*
-            <Stack spacing="3" >
-              
-            </Stack>
-          */}
         </BlockStyled>
       );
     });

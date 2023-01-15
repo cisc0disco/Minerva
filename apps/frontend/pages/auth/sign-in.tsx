@@ -1,21 +1,9 @@
 import Head from "next/head";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
-import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  Box,
-  Button,
-  Flex,
-  FormControl,
-  FormHelperText,
-  FormLabel,
-  Heading,
-  Input,
-  useColorModeValue,
-} from "@chakra-ui/react";
 import { useState } from "react";
+import { LoginStyled } from "styled/Login.styled";
+import { WarningCircle } from "phosphor-react";
 
 export default function SignIn() {
   const router = useRouter();
@@ -32,53 +20,49 @@ export default function SignIn() {
     });
     if (result.ok) {
       router.replace("/dashboard/home");
-      return;
     }
     setError("Špatné údaje");
   };
 
-  const bg = useColorModeValue("white", "#131224");
-
   return (
-    <>
+    <LoginStyled>
       <Head>
         <title>Sign In</title>
       </Head>
-      <Box bg={bg} w="100vw" h="100vh">
-        <Flex direction="column" justify="center" align="center" h={"100%"}>
-          <Heading>Přihlášení do portálu</Heading>
-          <Box mt={10} w={"20em"}>
-            <form onSubmit={onSubmit}>
-              {error && (
-                <Box my={4}>
-                  <Alert status="error" borderRadius={4}>
-                    <AlertIcon />
-                    <AlertDescription>{error}</AlertDescription>
-                  </Alert>
-                </Box>
-              )}
-              <FormControl isRequired>
-                <FormLabel>Emailová adresa</FormLabel>
-                <Input
-                  type="email"
-                  onChange={(event) => setEmail(event.currentTarget.value)}
-                />
-                <FormHelperText>Tvoje školní adresa</FormHelperText>
-              </FormControl>
-              <FormControl isRequired mt={6}>
-                <FormLabel>Heslo</FormLabel>
-                <Input
-                  type="password"
-                  onChange={(event) => setPassword(event.currentTarget.value)}
-                />
-              </FormControl>
-              <Button width="full" mt={5} type="submit">
-                Přihlásit se
-              </Button>
-            </form>
-          </Box>
-        </Flex>
-      </Box>
-    </>
+      <div className="container">
+        <h2>Přihlášení do portálu</h2>
+        <form onSubmit={onSubmit}>
+          {error && (
+            <div className="alert">
+              <WarningCircle size={22} color="#f3b5b4" weight="fill" /> {error}
+            </div>
+          )}
+          <div className="input-container">
+            <label className="required" htmlFor="email">
+              Emailová adresa
+            </label>
+            <input
+              required
+              type="email"
+              onChange={(event) => setEmail(event.currentTarget.value)}
+            />
+          </div>
+          <div className="input-container password">
+            <label className="required" htmlFor="password">
+              Heslo
+            </label>
+            <input
+              required
+              type="password"
+              onChange={(event) => setPassword(event.currentTarget.value)}
+            />
+          </div>
+
+          <button className="submit" type="submit">
+            Přihlásit Se
+          </button>
+        </form>
+      </div>
+    </LoginStyled>
   );
 }

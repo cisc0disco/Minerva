@@ -1,10 +1,8 @@
 import { Box, useMediaQuery } from "@chakra-ui/react";
 import { ArrowLeft, ListDashes } from "phosphor-react";
-import { useState } from "react";
+import { isMobile } from "lib/IsMobile";
 
 const MobileButton = (sidebarOpen, setSidebarOpen) => {
-  const [isMobile] = useMediaQuery("(max-width: 768px)");
-
   if (isMobile) {
     return (
       <Box p={3} zIndex="100">
