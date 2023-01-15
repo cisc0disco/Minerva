@@ -1,40 +1,20 @@
-import { Box, Button, Slide, Stack } from "@chakra-ui/react";
+import { Box, Button, Slide, Stack, useMediaQuery } from "@chakra-ui/react";
 import Blocks from "./Blocks";
+import { SidePanelStyled } from "styled/SidePanel.styled";
 
 const SidePanel = ({ hours, open, setOpen }) => {
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
   return (
-    <Slide
-      direction="right"
-      in={open}
-      style={{ width: "28em", overflow: "auto" }}
-    >
-      <Box
-        w="28em"
-        justifyContent={"center"}
-        overflow="auto"
-        borderLeft={"1px solid #252531"}
-      >
-        <Stack
-          mt={10}
-          spacing={"30px"}
-          align={"center"}
-          transition="width 0.3s 0s ease-in-out"
-        >
-          <Button
-            float={"right"}
-            right="6"
-            top="2"
-            pos={"absolute"}
-            backgroundColor="transparent"
-            fontSize={"20"}
-            onClick={() => setOpen(false)}
-          >
-            ✕
-          </Button>
-          <Blocks hours={hours} />
-        </Stack>
-      </Box>
-    </Slide>
+    <SidePanelStyled>
+      {isMobile && (
+        <div className="close-container">
+          <div className="close-button"></div>
+        </div>
+      )}
+      <div className="content">
+        <Blocks hours={hours} />
+      </div>
+    </SidePanelStyled>
   );
 };
 

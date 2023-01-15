@@ -3,12 +3,24 @@ import MaterialContent from "components/MaterialContent";
 import SideBar from "components/SideBar";
 import SidePanel from "components/SidePanel";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
-import { Box, Flex, useColorModeValue, Button } from "@chakra-ui/react";
-import { useState } from "react";
+import {
+  Box,
+  Flex,
+  useColorModeValue,
+  Button,
+  useMediaQuery,
+} from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 
 const Materials = ({ hours, trida }) => {
   const bg = useColorModeValue("white", "#131224");
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
   const [open, setOpen] = useState(false);
+  const [range, setRange] = useState("1-13");
+
+  useEffect(() => {
+    setOpen(!isMobile);
+  }, [isMobile]);
 
   return (
     <Flex>
@@ -16,7 +28,7 @@ const Materials = ({ hours, trida }) => {
       <Flex bg={bg} w="100vw" h="100vh">
         <Flex w={"100%"}>
           <Box w={"100%"}>
-            <MaterialContent range={"1-13"} trida={trida} />
+            <MaterialContent range={range} trida={trida} />
           </Box>
           {!open && (
             <Button

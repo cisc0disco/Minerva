@@ -14,6 +14,8 @@ export const StyledSideBar = styled.div<SideBar>`
   justify-content: top;
   --main-color: #b1b1b3;
   background-color: ${(props) => props.background};
+  z-index: 100;
+
   #centerIcons {
     display: flex;
     flex-direction: column;
@@ -57,12 +59,14 @@ export const StyledSideBar = styled.div<SideBar>`
     height: 4em;
     border-radius: 50%;
   }
+
   .active > .iconImage {
     background-color: #4c96f6;
   }
 
   .active > .iconImage > svg {
     color: white;
+    transition: color 0.5s;
   }
 
   .border {

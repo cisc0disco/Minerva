@@ -1,24 +1,31 @@
 import {
-  Card,
-  CardBody,
   Collapse,
   Heading,
   ListItem,
-  Stack,
   UnorderedList,
   Text,
   Button,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { BlockStyled } from "styled/Block.styled";
 
 type BlockType = {
-  Id: number;
+  id: number;
   Name: string;
   Description: string;
   Range: string;
 };
 
 const Blocks = ({ hours }) => {
+  const [chosenHours, setChosenHours] = useState(1);
+
+  function handleClick(e: React.MouseEvent<HTMLElement>, id: number) {
+    const { target } = e;
+    if ((target as HTMLElement).tagName.toLowerCase() !== "button") {
+      setChosenHours(id);
+    }
+  }
+
   if (hours) {
     return hours.map((block: BlockType) => {
       const [show, setShow] = useState(false);
@@ -26,31 +33,34 @@ const Blocks = ({ hours }) => {
       const handleToggle = () => setShow(!show);
 
       return (
-        <Card maxW="sm" w={"sm"} cursor={"pointer"}>
-          <CardBody>
-            <Stack spacing="3">
-              <Heading size="md">{block.Name}</Heading>
-              <Collapse in={show}>
-                <UnorderedList>
-                  {block.Description.split("\n").map(
-                    (line: string, index: number) => {
-                      return <ListItem key={index}>{line}</ListItem>;
-                    }
-                  )}
-                </UnorderedList>
-              </Collapse>
-              <Text>
-                Hodiny: <br />
-                <Text as={"span"} color="blue.600" fontSize="2xl">
-                  {block.Range}
-                </Text>
-              </Text>
-              <Button size="sm" onClick={handleToggle} mt="1rem">
-                Zobrazit {show ? "Méně" : "Více"}
-              </Button>
+        <BlockStyled
+          className={chosenHours == block.id ? "active" : ""}
+          key={block.id}
+          onClick={(e) => handleClick(e, block.id)}
+        >
+          <h2>{block.Name}</h2>
+          <div className={`section ${show ? "" : "collapsed"}`}>
+            <ul className="list">
+              {block.Description.split("\n").map(
+                (line: string, index: number) => {
+                  return <li key={index}>{line}</li>;
+                }
+              )}
+            </ul>
+          </div>
+          <div className="hours">
+            Hodiny: <br />
+            <h2 color="blue.600">{block.Range}</h2>
+          </div>
+          <div className="button" onClick={handleToggle}>
+            <button>Zobrazit {show ? "Méně" : "Více"}</button>
+          </div>
+          {/*
+            <Stack spacing="3" >
+              
             </Stack>
-          </CardBody>
-        </Card>
+          */}
+        </BlockStyled>
       );
     });
   } else {

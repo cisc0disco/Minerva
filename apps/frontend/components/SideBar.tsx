@@ -2,14 +2,13 @@ import { StyledSideBar } from "../styled/SideBar.styled";
 import {
   SignOut,
   PresentationChart,
-  FileCode,
   NotePencil,
   ListDashes,
   IdentificationCard,
   X,
   ArrowLeft,
 } from "phosphor-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { signOut } from "next-auth/react";
 import router from "next/router";
 import { Box, Flex, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
@@ -17,16 +16,19 @@ import { Box, Flex, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
 const SideBar = ({ currentPage }) => {
   const iconSize = 30;
   const [activeCategory, setActiveCategory] = useState(currentPage);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const bg = useColorModeValue("white", "#131224");
+  const borderColor = useColorModeValue("#b7b7b7", "#252531");
 
   const setPage = (page: string) => {
     setActiveCategory(page);
     router.push(`/dashboard/${page}`);
   };
 
-  const bg = useColorModeValue("white", "#131224");
-  const borderColor = useColorModeValue("#b7b7b7", "#252531");
-  const [isMobile] = useMediaQuery("(max-width: 768px)");
+  useEffect(() => {
+    setSidebarOpen(!isMobile);
+  }, [isMobile]);
 
   return (
     <Flex direction={"column"} bg={bg} h="100vh">

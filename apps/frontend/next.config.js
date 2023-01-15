@@ -7,6 +7,9 @@ const nextConfig = {
     // see https://styled-components.com/docs/tooling#babel-plugin for more info on the options.
     styledComponents: true,
   },
+  env: {
+    STRAPI_URL: process.env.STRAPI_URL,
+  },
 };
 
 module.exports = nextConfig;
