@@ -1,10 +1,5 @@
-import { useSession, signIn, getSession, signOut } from "next-auth/react";
-import Head from "next/head";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { IndexStyled } from "styled/Index.styled";
-import { Button } from "@chakra-ui/react";
 
 const Component = ({ data }) => {
   const router = useRouter();
@@ -15,14 +10,7 @@ const Component = ({ data }) => {
         🚧 Tato stránka je zatím <em>Work In Progress</em>, zatím můžete
         vstoupit na portál. 🚧
       </h1>
-      <Button
-        colorScheme="teal"
-        variant="outline"
-        size="lg"
-        onClick={() => router.push("/dashboard")}
-      >
-        Vstoupit
-      </Button>
+      <button onClick={() => router.push("/dashboard")}>Vstoupit</button>
     </IndexStyled>
   );
 };

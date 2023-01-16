@@ -3,18 +3,11 @@ import MaterialContent from "components/MaterialContent";
 import SideBar from "components/SideBar";
 import SidePanel from "components/SidePanel";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
-import {
-  Box,
-  Flex,
-  useColorModeValue,
-  Button,
-  useMediaQuery,
-} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { MaterialsStyled } from "styled/Materials.styled";
+import { isMobile } from "react-device-detect";
 
 const Materials = ({ hours, trida }) => {
-  const bg = useColorModeValue("white", "#131224");
-  const [isMobile] = useMediaQuery("(max-width: 768px)");
   const [open, setOpen] = useState(false);
   const [range, setRange] = useState("1-13");
 
@@ -23,29 +16,15 @@ const Materials = ({ hours, trida }) => {
   }, [isMobile]);
 
   return (
-    <Flex>
+    <MaterialsStyled>
       <SideBar currentPage={"materials"} />
-      <Flex bg={bg} w="100vw" h="100vh">
-        <Flex w={"100%"}>
-          <Box w={"100%"}>
-            <MaterialContent range={range} trida={trida} />
-          </Box>
-          {!open && (
-            <Button
-              backgroundColor={"#4c96f6"}
-              color="black"
-              onClick={() => setOpen(true)}
-              right={8}
-              top={4}
-              float={"right"}
-            >
-              Otevřít Témata
-            </Button>
-          )}
-        </Flex>
+      <div className="content">
+        <MaterialContent range={range} trida={trida} />
+      </div>
+      <div className="sidepanel">
         <SidePanel hours={hours} open={open} setOpen={setOpen} />
-      </Flex>
-    </Flex>
+      </div>
+    </MaterialsStyled>
   );
 };
 

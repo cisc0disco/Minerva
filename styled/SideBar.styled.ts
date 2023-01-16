@@ -6,7 +6,8 @@ type SideBar = {
 };
 
 export const StyledSideBar = styled.div<SideBar>`
-  width: 8em;
+  min-width: 6em;
+  max-width: 8em;
   height: 100vh;
   border-right: 1px solid ${(props) => props.borderColor};
   display: flex;
@@ -15,6 +16,7 @@ export const StyledSideBar = styled.div<SideBar>`
   --main-color: #b1b1b3;
   background-color: ${(props) => props.background};
   z-index: 100;
+  padding-top: 10em;
 
   #centerIcons {
     display: flex;

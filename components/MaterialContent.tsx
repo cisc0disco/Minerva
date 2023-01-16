@@ -60,8 +60,8 @@ const MaterialContent = ({ range, trida }) => {
     });
     return (
       <>
-        {loading && <Spinner />}
-        <Wrap w="100%em" h="100%" p="8">
+        {loading && <p>Loading</p>}
+        {/*<Wrap w="100%em" h="100%" p="8">
           {presentations.map((presentation) => {
             const presentationData: PresentationData = presentation.attributes;
             const presentationUrl =
@@ -87,6 +87,7 @@ const MaterialContent = ({ range, trida }) => {
             );
           })}
         </Wrap>
+        */}
       </>
     );
   }

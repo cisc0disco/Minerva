@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SidePanelStyled = styled.div`
   height: 100%;
-  width: 30em;
+  width: 25em;
   overflow: auto;
 
   //borderLeft={{ base: "", md: "1px solid #252531" }}
@@ -10,6 +10,7 @@ export const SidePanelStyled = styled.div`
   //transition: width 3s 0s ease-in-out;
 
   .content {
+    min-width: 10em;
     display: flex;
     flex-direction: column;
     justify-content: center;

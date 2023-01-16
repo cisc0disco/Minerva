@@ -19,4 +19,21 @@ export const IndexStyled = styled.div`
     text-align: center;
     font-size: 2em;
   }
+
+  button {
+    font-family: "Inter", sans-serif;
+    font-size: 1.25em;
+    color: #72e3d1;
+    font-weight: 700;
+    border: 1px solid #72e3d1;
+    width: 6.5em;
+    height: 2.2em;
+    border-radius: 0.3em;
+  }
+
+  button:hover {
+    background-color: #72e3d1;
+    color: black;
+    transition: background-color 1s;
+  }
 `;

@@ -3,23 +3,19 @@ import {
   SignOut,
   PresentationChart,
   NotePencil,
-  ListDashes,
   IdentificationCard,
-  X,
-  ArrowLeft,
 } from "phosphor-react";
 import { useEffect, useState } from "react";
 import { signOut } from "next-auth/react";
 import router from "next/router";
-import { Box, Flex, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
+import { isMobile } from "react-device-detect";
 
 const SideBar = ({ currentPage }) => {
   const iconSize = 30;
   const [activeCategory, setActiveCategory] = useState(currentPage);
-  const [isMobile] = useMediaQuery("(max-width: 768px)");
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const bg = useColorModeValue("white", "#131224");
-  const borderColor = useColorModeValue("#b7b7b7", "#252531");
+  const bg = "#131224";
+  const borderColor = "#252531";
 
   const setPage = (page: string) => {
     setActiveCategory(page);
@@ -31,82 +27,53 @@ const SideBar = ({ currentPage }) => {
   }, [isMobile]);
 
   return (
-    <Flex direction={"column"} bg={bg} h="100vh">
-      {isMobile ? (
-        <Box zIndex="100">
-          {sidebarOpen ? (
-            ""
-          ) : (
-            <Flex justifyContent={"center"} w="8em" mt={"1em"} pos="absolute">
-              <ListDashes
-                size={iconSize + 10}
-                onClick={() => setSidebarOpen(true)}
-              />
-            </Flex>
-          )}
-        </Box>
-      ) : (
-        ""
-      )}
-
-      {sidebarOpen && (
-        <StyledSideBar background={bg} borderColor={borderColor}>
-          <Flex justifyContent={"center"} w="100%" mb={"4em"} mt={"1em"}>
-            {isMobile && (
-              <ArrowLeft
-                size={iconSize + 10}
-                onClick={() => setSidebarOpen(false)}
-              />
-            )}
-          </Flex>
-          <div id="centerIcons">
-            <div
-              className={`icon ${activeCategory == "home" ? "active" : ""}`}
-              onClick={() => setPage("home")}
-            >
-              <div className="iconImage">
-                <IdentificationCard size={iconSize} />
-              </div>
-              <p>Home</p>
+    sidebarOpen && (
+      <StyledSideBar background={bg} borderColor={borderColor}>
+        <div id="centerIcons">
+          <div
+            className={`icon ${activeCategory == "home" ? "active" : ""}`}
+            onClick={() => setPage("home")}
+          >
+            <div className="iconImage">
+              <IdentificationCard size={iconSize} />
             </div>
-            <div
-              className={`icon ${
-                activeCategory == "materials" ? "active" : ""
-              }`}
-              onClick={() => setPage("materials")}
-            >
-              <div className="iconImage">
-                <PresentationChart size={iconSize} />
-              </div>
-              <p>Materiály</p>
-            </div>
-            <div
-              className={`icon ${activeCategory == "homework" ? "active" : ""}`}
-              onClick={() => setPage("homework")}
-            >
-              <div className="iconImage">
-                <NotePencil size={iconSize} />
-              </div>
-              <p>Úkoly</p>
-            </div>
+            <p>Home</p>
           </div>
-          <div className="border"></div>
-          <div id="bottomIcons">
-            <div
-              className="icon"
-              onClick={() => {
-                signOut({ callbackUrl: "/" });
-              }}
-            >
-              <div className="iconImage">
-                <SignOut size={iconSize} />
-              </div>
-              <p>Odhlásit</p>
+          <div
+            className={`icon ${activeCategory == "materials" ? "active" : ""}`}
+            onClick={() => setPage("materials")}
+          >
+            <div className="iconImage">
+              <PresentationChart size={iconSize} />
             </div>
+            <p>Materiály</p>
           </div>
-        </StyledSideBar>
-      )}
-    </Flex>
+          <div
+            className={`icon ${activeCategory == "homework" ? "active" : ""}`}
+            onClick={() => setPage("homework")}
+          >
+            <div className="iconImage">
+              <NotePencil size={iconSize} />
+            </div>
+            <p>Úkoly</p>
+          </div>
+        </div>
+        <div className="border"></div>
+        <div id="bottomIcons">
+          <div
+            className="icon"
+            onClick={() => {
+              signOut({ callbackUrl: "/" });
+            }}
+          >
+            <div className="iconImage">
+              <SignOut size={iconSize} />
+            </div>
+            <p>Odhlásit</p>
+          </div>
+        </div>
+      </StyledSideBar>
+    )
   );
 };
 
